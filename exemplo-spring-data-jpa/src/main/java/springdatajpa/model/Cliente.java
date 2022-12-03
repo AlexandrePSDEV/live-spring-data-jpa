@@ -7,9 +7,21 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tab_cliente")
+/*
+@NamedEntityGraph(
+        name = "cliente-full",
+        attributeNodes = {
+                @NamedAttributeNode("profissao"),
+                @NamedAttributeNode("emails"),
+                @NamedAttributeNode("telefones"),
+        }
+)
+*/
+
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +39,11 @@ public class Cliente {
     @CollectionTable(name="tab_cliente_email",
             joinColumns=@JoinColumn(name = "cliente_id", referencedColumnName = "id"))
     @Column(name="email")
-    private List<String> emails = new ArrayList<String>();
+    private Set<String> emails;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id",referencedColumnName = "id")
-    private List<Telefone> telefones = new ArrayList<Telefone>();
+    private Set<Telefone> telefones;
 
     /**prq não usa o objeto Profissao
     /e as anotações @ManyToOne ??
@@ -39,7 +51,7 @@ public class Cliente {
     private Integer profissao;
 
     */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profissao_id")
     private Profissao profissao;
 
@@ -71,19 +83,19 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public List<String> getEmails() {
+    public Set<String> getEmails() {
         return emails;
     }
 
-    public void setEmails(List<String> emails) {
+    public void setEmails(Set<String> emails) {
         this.emails = emails;
     }
 
-    public List<Telefone> getTelefones() {
+    public Set<Telefone> getTelefones() {
         return telefones;
     }
 
-    public void setTelefones(List<Telefone> telefones) {
+    public void setTelefones(Set<Telefone> telefones) {
         this.telefones = telefones;
     }
 

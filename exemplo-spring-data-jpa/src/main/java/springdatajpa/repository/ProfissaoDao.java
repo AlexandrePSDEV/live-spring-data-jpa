@@ -2,6 +2,7 @@ package springdatajpa.repository;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import springdatajpa.model.Profissao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
