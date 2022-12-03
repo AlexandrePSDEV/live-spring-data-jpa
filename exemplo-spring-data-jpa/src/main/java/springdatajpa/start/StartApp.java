@@ -1,15 +1,18 @@
-package springdatajpa;
+package springdatajpa.start;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import springdatajpa.model.Profissao;
+import springdatajpa.repository.ProfissaoRepository;
 
 import java.util.List;
 
 @Component
-public class JPAApplication implements CommandLineRunner {
+public class StartApp implements CommandLineRunner {
     @Autowired
     private ProfissaoRepository profissaoCrud;
+
     @Override
     public void run(String... args) throws Exception {
         incluirProfissao();

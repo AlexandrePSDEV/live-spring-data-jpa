@@ -1,4 +1,4 @@
-package springdatajpa;
+package springdatajpa.repository;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

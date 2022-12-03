@@ -1,4 +1,4 @@
-package springdatajpa;
+package springdatajpa.model;
 
 import javax.persistence.*;
 
