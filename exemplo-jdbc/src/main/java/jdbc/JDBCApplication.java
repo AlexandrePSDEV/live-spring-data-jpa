@@ -1,9 +1,8 @@
 package jdbc;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Application {
+public class JDBCApplication {
     private static ProfissaoCrud profissaoCrud;
     public static void main(String[] args) {
         profissaoCrud = new ProfissaoCrud();
