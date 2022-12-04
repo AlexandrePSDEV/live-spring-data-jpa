@@ -1,11 +1,14 @@
 package springdatajpawebapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import springdatajpawebapi.model.cliente.ClienteLog;
 import springdatajpawebapi.model.cliente.Endereco;
+import springdatajpawebapi.model.cliente.Sexo;
 import springdatajpawebapi.model.cliente.Telefone;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -58,6 +61,12 @@ public class Cliente {
     @JoinColumn(name = "profissao_id")
     private Profissao profissao;
 
+    @Enumerated(EnumType.STRING)//ordinal represeta a ordem o elemento do enum - CUIDADO
+    private Sexo sexo;
+
+    @Embedded
+    private ClienteLog log;
+
     public Integer getId() {
         return id;
     }
@@ -108,5 +117,17 @@ public class Cliente {
 
     public void setProfissao(Profissao profissao) {
         this.profissao = profissao;
+    }
+
+    @PrePersist
+    private void logInclusao(){
+        System.out.println("chamando este método quando o Hibernate for salvar este objeto");
+        this.log = new ClienteLog();
+        this.log.setDataHoraCriacao(LocalDateTime.now());
+    }
+    @PreUpdate
+    private void logAlteracao(){
+        System.out.println("chamando este método quando o Hibernate for alterar este objeto");
+        this.log.setDataHoraAlteracao(LocalDateTime.now());
     }
 }
