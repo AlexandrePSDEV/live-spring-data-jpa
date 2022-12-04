@@ -1,8 +1,8 @@
-package springdatajpa.repository;
+package springdatajpawebapi.repository;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import springdatajpa.model.Profissao;
+import springdatajpawebapi.model.Profissao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

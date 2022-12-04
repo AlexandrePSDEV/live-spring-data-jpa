@@ -1,4 +1,4 @@
-package springdatajpa.model.cliente;
+package springdatajpawebapi.model.cliente;
 
 import javax.persistence.Embeddable;
 

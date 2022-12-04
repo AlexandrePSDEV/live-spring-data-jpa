@@ -1,7 +1,7 @@
-package springdatajpa.model;
+package springdatajpawebapi.model;
 
-import springdatajpa.model.cliente.Endereco;
-import springdatajpa.model.cliente.Telefone;
+import springdatajpawebapi.model.cliente.Endereco;
+import springdatajpawebapi.model.cliente.Telefone;
 
 import javax.persistence.*;
 import java.time.LocalDate;
