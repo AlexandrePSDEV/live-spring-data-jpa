@@ -10,5 +10,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     //@EntityGraph(attributePaths={"profissao"})
     //@EntityGraph(value = "cliente-full", type = EntityGraph.EntityGraphType.LOAD)
     @EntityGraph(attributePaths={"profissao","emails","telefones"})
-    Cliente buscar(Integer id);
+    Cliente getFull(Integer id);
 }

@@ -2,6 +2,8 @@ package springdatajpawebapi.start;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import springdatajpawebapi.model.Cliente;
 import springdatajpawebapi.model.Profissao;
 import springdatajpawebapi.model.cliente.Endereco;
@@ -14,7 +16,7 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
-//@Component
+@Component
 public class StartApp implements CommandLineRunner {
     @Autowired
     private ProfissaoRepository profissaoCrud;
@@ -40,7 +42,7 @@ public class StartApp implements CommandLineRunner {
     }
     private void buscarClienteCompleto(Integer id){
         System.out.println("BUSCANDO O CLIENTE COMPLETO COM ID: " + id);
-        Cliente cliente  = clienteRepository.buscar(id);
+        Cliente cliente  = clienteRepository.getFull(id);
         if(cliente!=null){
             System.out.println(cliente.getNome());
             if(cliente.getProfissao()!=null)
@@ -68,7 +70,7 @@ public class StartApp implements CommandLineRunner {
 
     }
     private void incluirCliente2(Profissao profissao){
-        if(!clienteRepository.existsById(1)){
+        if(!clienteRepository.existsById(2)){
             Cliente cliente = new Cliente();
             cliente.setNome("frank marlon");
             cliente.setDataNascimento(LocalDate.now());

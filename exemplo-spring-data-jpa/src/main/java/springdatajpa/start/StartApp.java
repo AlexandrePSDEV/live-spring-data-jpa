@@ -41,7 +41,7 @@ public class StartApp implements CommandLineRunner {
     }
     private void buscarClienteCompleto(Integer id){
         System.out.println("BUSCANDO O CLIENTE COMPLETO COM ID: " + id);
-        Cliente cliente  = clienteRepository.buscar(id);
+        Cliente cliente  = clienteRepository.getFull(id);
         if(cliente!=null){
             System.out.println(cliente.getNome());
             if(cliente.getProfissao()!=null)
