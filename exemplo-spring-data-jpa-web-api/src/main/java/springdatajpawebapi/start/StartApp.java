@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import springdatajpawebapi.model.Cliente;
 import springdatajpawebapi.model.Profissao;
 import springdatajpawebapi.model.cliente.Endereco;
+import springdatajpawebapi.model.cliente.Sexo;
 import springdatajpawebapi.model.cliente.Telefone;
 import springdatajpawebapi.model.cliente.TelefoneTipo;
 import springdatajpawebapi.repository.ClienteRepository;
@@ -60,7 +61,8 @@ public class StartApp implements CommandLineRunner {
     private void incluirCliente1(Profissao profissao){
         if(!clienteRepository.existsById(1)){
             Cliente cliente = new Cliente();
-            cliente.setNome("gleyson sampaio");
+            cliente.setNome("gleyson");
+            cliente.setSexo(Sexo.M);
             cliente.setDataNascimento(LocalDate.now());
             cliente.setProfissao(profissao);
             cliente.setEmails(Collections.singleton("gleyson@hotmail.com"));
@@ -80,10 +82,11 @@ public class StartApp implements CommandLineRunner {
     private void incluirCliente2(Profissao profissao){
         if(!clienteRepository.existsById(2)){
             Cliente cliente = new Cliente();
-            cliente.setNome("frank marlon");
+            cliente.setNome("izabelly");
+            cliente.setSexo(Sexo.F);
             cliente.setDataNascimento(LocalDate.now());
             cliente.setProfissao(profissao);
-            cliente.setEmails(Collections.singleton("frankmarlon@hotmail.com"));
+            cliente.setEmails(Collections.singleton("izabelly@gmail.com"));
             cliente.setTelefones(Collections.singleton(new Telefone(TelefoneTipo.RES,9823870934L)));
             Endereco endereco = new Endereco();
             endereco.setCep("87685586");

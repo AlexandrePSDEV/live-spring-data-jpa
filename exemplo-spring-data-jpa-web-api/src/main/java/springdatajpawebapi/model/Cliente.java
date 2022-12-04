@@ -119,6 +119,14 @@ public class Cliente {
         this.profissao = profissao;
     }
 
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+
     @PrePersist
     private void logInclusao(){
         System.out.println("chamando este método quando o Hibernate for salvar este objeto");
