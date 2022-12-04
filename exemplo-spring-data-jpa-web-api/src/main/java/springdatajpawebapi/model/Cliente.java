@@ -1,5 +1,6 @@
 package springdatajpawebapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import springdatajpawebapi.model.cliente.Endereco;
 import springdatajpawebapi.model.cliente.Telefone;
 
@@ -51,6 +52,8 @@ public class Cliente {
     private Integer profissao;
 
     */
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profissao_id")
     private Profissao profissao;

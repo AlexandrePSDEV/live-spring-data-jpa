@@ -21,6 +21,7 @@ public class ClienteResource {
     @Autowired
     private ClienteRepository repository;
 
+    @PostMapping
     public void post(@RequestBody Cliente request){//aqui deveria ter o seu DTO
         service.save(request);
     }

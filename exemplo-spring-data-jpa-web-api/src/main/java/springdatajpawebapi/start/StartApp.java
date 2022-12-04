@@ -26,27 +26,35 @@ public class StartApp implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Profissao profissao = incluirProfissao();
-        incluirCliente1(profissao);
-        incluirCliente2(profissao);
+        //Profissao profissao = incluirProfissao();
+        //incluirCliente1(profissao);
+        //incluirCliente2(profissao);
         listarClientes();
         buscarClienteCompleto(1);
-        buscarClienteCompleto(2);
+        //buscarClienteCompleto(2);
 
     }
     //service
     private void listarClientes(){
+        System.out.println("LISTANDO OS CLIENTES COM LAZY HABILITADO: ");
         for(Cliente cli: clienteRepository.findAll()){
             System.out.println(cli.getNome());
         }
     }
     private void buscarClienteCompleto(Integer id){
         System.out.println("BUSCANDO O CLIENTE COMPLETO COM ID: " + id);
+        System.out.println("ESTA OPERAÇÃO FORÇA A EXECUÇÃO DE CONSULTAS EM OUTRAS TABELAS");
         Cliente cliente  = clienteRepository.getFull(id);
         if(cliente!=null){
             System.out.println(cliente.getNome());
             if(cliente.getProfissao()!=null)
                 System.out.println("profissao " + cliente.getProfissao().getNome() );
+            if(cliente.getTelefones()!=null) {
+                for(Telefone t: cliente.getTelefones()){
+                    System.out.println("telefone " + t.getNumero());
+                }
+
+            }
         }
     }
     private void incluirCliente1(Profissao profissao){
