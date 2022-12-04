@@ -3,7 +3,6 @@ package springdatajpawebapi.start;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import springdatajpawebapi.model.Cliente;
 import springdatajpawebapi.model.Profissao;
 import springdatajpawebapi.model.cliente.Endereco;
@@ -27,13 +26,23 @@ public class StartApp implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //Profissao profissao = incluirProfissao();
-        //incluirCliente1(profissao);
-        //incluirCliente2(profissao);
+       /* Profissao profissao = incluirProfissao();
+        incluirCliente1(profissao);
+        incluirCliente2(profissao);
         listarClientes();
         buscarClienteCompleto(1);
-        //buscarClienteCompleto(2);
-
+        buscarClienteCompleto(2);*/
+        alterarCliente();
+    }
+    private  void alterarCliente(){
+        Cliente cliente  = clienteRepository.findById(2).orElse(null);
+        if(cliente!=null){
+            cliente.setNome("izabelly noronha");
+            clienteRepository.save(cliente);
+            System.out.println("alterando um cliente");
+        }else {
+            System.out.println("Não foi possivel alterar o cliente");
+        }
     }
     //service
     private void listarClientes(){
@@ -103,7 +112,7 @@ public class StartApp implements CommandLineRunner {
         Profissao profissao  = profissaoCrud.findById(1).orElse(null);
         if(profissao==null) {
             profissao = new Profissao();
-            profissao.setNome("PROGRAMADOR");
+            profissao.setNome("PROGRAMADOR(a)");
             profissaoCrud.save(profissao);
             System.out.println("profissao adicionada com sucesso");
         }
@@ -112,7 +121,7 @@ public class StartApp implements CommandLineRunner {
     private  void alterarProfissao(){
         Profissao profissao  = profissaoCrud.findById(1).orElse(null);
         if(profissao!=null){
-            profissao.setNome("PROGRAMADOR / INSTRUTOR");
+            profissao.setNome("PROGRAMADOR(a) / INSTRUTOR(a)");
             profissaoCrud.save(profissao);
             System.out.println("profissao adicionado com sucesso");
         }else {
