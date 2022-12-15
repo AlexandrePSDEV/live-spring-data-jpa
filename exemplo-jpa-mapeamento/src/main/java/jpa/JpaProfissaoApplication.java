@@ -6,7 +6,7 @@ import jpa.model.Profissao;
 
 import java.util.List;
 
-public class JPAApplication {
+public class JpaProfissaoApplication {
     private static ProfissaoDao profissaoCrud;
     public static void main(String[] args) {
         FabricaConexao.iniciarConexao();
