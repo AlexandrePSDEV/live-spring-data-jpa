@@ -5,6 +5,7 @@ import java.util.List;
 public class JPAApplication {
     private static ProfissaoDao profissaoCrud;
     public static void main(String[] args) {
+        FabricaConexao.iniciarConexao();
         profissaoCrud = new ProfissaoDao();
         incluirProfissao();
         alterarProfissao();

@@ -18,7 +18,7 @@ public class ProfissaoCrud {
             
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
-                System.out.println("Um novo profissao foi salvo com sucesso!");
+                System.out.println("Uma nova profissao foi salva com sucesso!");
             }
 
         }catch (Exception ex){
@@ -34,7 +34,7 @@ public class ProfissaoCrud {
             statement.setInt(2, profissao.getId());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
-                System.out.println("Serviço alterado com sucesso!");
+                System.out.println("Profissão alterada com sucesso!");
             }
 
         }catch (Exception ex){

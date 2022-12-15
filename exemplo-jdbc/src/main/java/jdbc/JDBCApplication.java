@@ -5,6 +5,7 @@ import java.util.List;
 public class JDBCApplication {
     private static ProfissaoCrud profissaoCrud;
     public static void main(String[] args) {
+        FabricaoConexao.iniciarConexao();
         profissaoCrud = new ProfissaoCrud();
         incluirProfissao();
         alterarProfissao();

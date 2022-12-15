@@ -9,3 +9,5 @@ CREATE TABLE public.tab_profissao (
 	nome        varchar(255)    NOT NULL,
 	CONSTRAINT tab_profissao_pkey PRIMARY KEY (id)
 );
+
+--insert into tab_profissao (nome) values ('INSTRUTOR');

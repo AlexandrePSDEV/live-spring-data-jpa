@@ -11,17 +11,7 @@ import java.util.List;
 public class ProfissaoDao {
     private EntityManager entityManager;
     public ProfissaoDao(){
-        /**
-          isso só deve acontecer uma vez ao longo da aplicação
-          Se algum dia precisar, estude sobre padrão singleton
-         */
-        try {
-            EntityManagerFactory factory = Persistence.createEntityManagerFactory("MY_PU");
-            entityManager = factory.createEntityManager();
-            System.out.println("conexao realizada com sucesso");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        entityManager = FabricaConexao.getEntityManager();
     }
     public void save (Profissao profissao){
         entityManager.getTransaction().begin();;
