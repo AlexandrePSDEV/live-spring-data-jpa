@@ -7,16 +7,7 @@ import java.util.List;
 public class ProfissaoCrud {
     private Connection conexao;
     public ProfissaoCrud(){
-        /**
-          isso só deve acontecer uma vez ao longo da aplicação
-          Se algum dia precisar, estude sobre padrão singleton
-         */
-        try{
-            conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/live-spring-data-jpa", "postgres", "postgres");
-            System.out.println("CONEXAO REALIZADA COM SUCESSO");
-        }catch (Exception ex){
-
-        }
+       conexao = FabricaoConexao.getConnection();
     }
     public void save (Profissao profissao){
         try {
