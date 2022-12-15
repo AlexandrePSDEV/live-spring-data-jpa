@@ -15,20 +15,15 @@ public class ClienteQL {
     public void listarClientes(){
         Query query = entityManager.createQuery("SELECT c FROM Cliente c");
         List<Cliente> clientes = query.getResultList();
-        for(Cliente c: clientes){
-            System.out.println(c.getNome());
-            if(c.getEmails()!=null){
-                System.out.println("Este cliente possui e-mails");
-                for(String e: c.getEmails()){
-                    System.out.println(e);
-                }
-            }
-            if(c.getTelefones()!=null){
-                System.out.println("Este cliente possui telefones");
-                for(Telefone t: c.getTelefones()){
-                    System.out.println(t.getNumero() + "-" + t.getTipo());
-                }
-            }
-        }
+        System.out.println("listando os clientes");
+    }
+    public void listarClientesPorNome(String nome){
+        Query query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.nome LIKE :nome");
+
+        //query.setParameter("nome",nome);
+        query.setParameter("nome","%"+nome+"%");
+
+        List<Cliente> clientes = query.getResultList();
+        System.out.println("listando os clientes que possuem o nome " + nome);
     }
 }

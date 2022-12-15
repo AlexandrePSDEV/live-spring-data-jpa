@@ -29,7 +29,6 @@ public class Cliente {
     private Set<String> emails;
 
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.LAZY)
-    //@OneToMany()
     @JoinColumn(name = "cliente_id",referencedColumnName = "id")
     private Set<Telefone> telefones;
 
@@ -94,4 +93,5 @@ public class Cliente {
     public void setProfissao(Profissao profissao) {
         this.profissao = profissao;
     }
+
 }
