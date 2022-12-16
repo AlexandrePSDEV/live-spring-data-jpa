@@ -15,8 +15,8 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
-@Component
-public class StartApp implements CommandLineRunner {
+//@Component
+public class StartBasic implements CommandLineRunner {
     @Autowired
     private ProfissaoRepository profissaoCrud;
 
@@ -75,7 +75,7 @@ public class StartApp implements CommandLineRunner {
             System.out.println(p.getId() + "--" + p.getNome());
         }
     }
-
+    //Lazy error
     private void listarClientes(){
         for(Cliente cli: clienteRepository.findAll()){
             System.out.println(cli.getNome());
@@ -84,6 +84,8 @@ public class StartApp implements CommandLineRunner {
             System.out.println(cli.getProfissao().getNome());
         }
     }
+    //Query Override
+    //Entity Graph
     private void buscarClienteComProfissao(Integer id){
         System.out.println("BUSCANDO O CLIENTE E SUA PROFISSAO COM ID: " + id);
         Cliente cliente  = clienteRepository.findClienteWithProfissao(id);
@@ -94,6 +96,8 @@ public class StartApp implements CommandLineRunner {
             //System.out.println(cliente.getEmails());
         }
     }
+    //Query Override
+    //Entity Graph
     private void buscarClienteCompleto(Integer id){
         System.out.println("BUSCANDO O CLIENTE COMPLETO COM ID: " + id);
         Cliente cliente  = clienteRepository.findFullCliente(id);
