@@ -2,6 +2,7 @@ package springdatajpa.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import springdatajpa.dto.ProfissaoDto;
+import springdatajpa.dto.ProfissaoView;
 import springdatajpa.model.Profissao;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface ProfissaoRepository extends JpaRepository<Profissao,Integer> {
 
     //Projection
     List<ProfissaoDto> findByNome(String nome);
+    List<ProfissaoView> findViewByNome(String nome);
 }

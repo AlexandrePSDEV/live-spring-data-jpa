@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import springdatajpa.dto.ProfissaoDto;
+import springdatajpa.dto.ProfissaoView;
 import springdatajpa.model.Cliente;
 import springdatajpa.model.Profissao;
 import springdatajpa.model.cliente.Endereco;
@@ -28,13 +29,21 @@ public class StartProjections implements CommandLineRunner {
     //https://thorben-janssen.com/spring-data-jpa-query-projections/
     @Override
     public void run(String... args) throws Exception {
-        listarProfissoesProjection();
-
+        //listarProfissoesProjection();
+        listarProfissoesViewProjection();
     }
+    //Projections Dtos
     private void listarProfissoesProjection(){
         List<ProfissaoDto>  dtos = profissaoCrud.findByNome("PROGRAMADOR");
         for(ProfissaoDto d: dtos){
             System.out.println(d);
+        }
+    }
+    //Projections View
+    private void listarProfissoesViewProjection(){
+        List<ProfissaoView>  views = profissaoCrud.findViewByNome("PROGRAMADOR");
+        for(ProfissaoView v: views){
+            System.out.println(v.getId() + "-"+v.getNome());
         }
     }
 
