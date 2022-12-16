@@ -1,11 +1,10 @@
-package springdatajpawebapi.model.cliente;
+package springdatajpawebapi.model;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
 import java.time.LocalDateTime;
 
 @Embeddable
-public class ClienteLog {
+public class ProfissaoLog {
     private LocalDateTime dataHoraCriacao;
     private LocalDateTime dataHoraAlteracao;
 
