@@ -1,4 +1,4 @@
-package springdatajpa.dto;
+package springdatajpa.dto.view;
 
 public interface ProfissaoView {
    public String getId();

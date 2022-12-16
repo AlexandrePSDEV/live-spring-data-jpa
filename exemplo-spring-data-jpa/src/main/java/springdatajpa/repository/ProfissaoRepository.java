@@ -2,7 +2,7 @@ package springdatajpa.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import springdatajpa.dto.ProfissaoDto;
-import springdatajpa.dto.ProfissaoView;
+import springdatajpa.dto.view.ProfissaoView;
 import springdatajpa.model.Profissao;
 
 import java.util.List;
