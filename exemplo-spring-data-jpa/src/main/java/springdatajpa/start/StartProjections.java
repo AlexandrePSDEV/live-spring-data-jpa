@@ -56,6 +56,7 @@ public class StartProjections implements CommandLineRunner {
         for(ClienteResponse v: views){
             System.out.println(v.getId() + "-"+v.getNome() );
             System.out.println(v.getEndereco().getLogradouro() + "-"+v.getEndereco().getNumero() + "-"+v.getEndereco().getCep() );
+            System.out.println(v.getProfissao().getId() + "-"+v.getProfissao().getNome() );
         }
     }
 

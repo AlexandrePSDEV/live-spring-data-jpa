@@ -15,17 +15,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "tab_cliente")
-/*
-@NamedEntityGraph(
-        name = "cliente-full",
-        attributeNodes = {
-                @NamedAttributeNode("profissao"),
-                @NamedAttributeNode("emails"),
-                @NamedAttributeNode("telefones"),
-        }
-)
-*/
-
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

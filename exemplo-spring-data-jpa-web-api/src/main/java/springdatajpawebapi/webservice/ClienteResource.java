@@ -2,6 +2,7 @@ package springdatajpawebapi.webservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springdatajpawebapi.dto.response.ClienteResponse;
 import springdatajpawebapi.model.Cliente;
 import springdatajpawebapi.repository.ClienteRepository;
 import springdatajpawebapi.service.ClienteService;
@@ -25,9 +26,13 @@ public class ClienteResource {
     public void post(@RequestBody Cliente request){//aqui deveria ter o seu DTO
         service.save(request);
     }
-    @GetMapping
+    @GetMapping("/all")
     public List<Cliente> getAll(){
         return repository.findAll();
+    }
+    @GetMapping()
+    public List<ClienteResponse> getByNome(@RequestParam("nome") String nome){
+        return repository.findByNomeContaining(nome);
     }
     @GetMapping("/{id}")
     public Cliente getOne(@PathVariable("id") Integer id){
