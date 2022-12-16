@@ -9,7 +9,9 @@ public class JpaClienteQLApplication {
         FabricaConexao.iniciarConexao();
         clienteQL = new ClienteQL();
         //clienteQL.listarClientes();
-        clienteQL.listarClientesPorNome("marlon");
+        //clienteQL.listarClientesPorNome("marlon");
+        //clienteQL.listarClientesParcialDto();
+        clienteQL.listarClientesDto();
     }
 
 }
