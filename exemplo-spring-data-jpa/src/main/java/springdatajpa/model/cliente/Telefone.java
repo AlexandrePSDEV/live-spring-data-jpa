@@ -43,4 +43,13 @@ public class Telefone {
     public void setNumero(Long numero) {
         this.numero = numero;
     }
+
+    @Override
+    public String toString() {
+        return "Telefone{" +
+                "id=" + id +
+                ", tipo=" + tipo +
+                ", numero=" + numero +
+                '}';
+    }
 }

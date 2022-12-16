@@ -26,14 +26,56 @@ public class StartApp implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Profissao profissao = incluirProfissao();
-        incluirCliente1(profissao);
-        incluirCliente2(profissao);
-        listarClientes();
-        buscarClienteCompleto(1);
-        buscarClienteCompleto(2);
+        listarProfissoesNome("GRA");
+        //incluirCliente1(profissao);
+        //incluirCliente2(profissao);
+        //listarClientes();
+        //buscarClienteComProfissao(1);
+        //buscarClienteCompleto(1);
 
     }
-    //service
+    //Power Interfaces (extends)
+    private  Profissao incluirProfissao(){
+        Profissao profissao  = profissaoCrud.findById(1).orElse(null);
+        if(profissao==null) {
+            profissao = new Profissao();
+            profissao.setNome("PROGRAMADOR");
+            profissaoCrud.save(profissao);
+            System.out.println("profissao adicionada com sucesso");
+        }
+        return profissao;
+    }
+    //Power Interfaces (extends)
+    private  void alterarProfissao(){
+        Profissao profissao  = profissaoCrud.findById(1).orElse(null);
+        if(profissao!=null){
+            profissao.setNome("PROGRAMADOR / INSTRUTOR");
+            profissaoCrud.save(profissao);
+            System.out.println("profissao adicionado com sucesso");
+        }else {
+            System.out.println("Não existe a profissão com o id informado");
+        }
+    }
+    //Power Interfaces (extends)
+    private  void listarProfissoes(){
+        List<Profissao> profissoes = profissaoCrud.findAll();
+        for(Profissao p:profissoes){
+            System.out.println(p.getId() + "--" + p.getNome());
+        }
+    }
+    //Power Interfaces (extends)
+    private  void excluirProfissao(){
+        profissaoCrud.deleteById(1);
+        System.out.println("profissao excluida com sucesso");
+    }
+    //Query Methods
+    private  void listarProfissoesNome(String nome){
+        List<Profissao> profissoes = profissaoCrud.findByNomeContaining(nome);
+        for(Profissao p:profissoes){
+            System.out.println(p.getId() + "--" + p.getNome());
+        }
+    }
+
     private void listarClientes(){
         for(Cliente cli: clienteRepository.findAll()){
             System.out.println(cli.getNome());
@@ -42,13 +84,24 @@ public class StartApp implements CommandLineRunner {
             System.out.println(cli.getProfissao().getNome());
         }
     }
-    private void buscarClienteCompleto(Integer id){
-        System.out.println("BUSCANDO O CLIENTE COMPLETO COM ID: " + id);
-        Cliente cliente  = clienteRepository.getFull(id);
+    private void buscarClienteComProfissao(Integer id){
+        System.out.println("BUSCANDO O CLIENTE E SUA PROFISSAO COM ID: " + id);
+        Cliente cliente  = clienteRepository.findClienteWithProfissao(id);
         if(cliente!=null){
             System.out.println(cliente.getNome());
-            if(cliente.getProfissao()!=null)
-                System.out.println("profissao " + cliente.getProfissao().getNome() );
+            System.out.println("profissao " + cliente.getProfissao().getNome() );
+            //System.out.println(cliente.getTelefones());
+            //System.out.println(cliente.getEmails());
+        }
+    }
+    private void buscarClienteCompleto(Integer id){
+        System.out.println("BUSCANDO O CLIENTE COMPLETO COM ID: " + id);
+        Cliente cliente  = clienteRepository.findFullCliente(id);
+        if(cliente!=null){
+            System.out.println(cliente.getNome());
+            System.out.println("profissao " + cliente.getProfissao().getNome() );
+            System.out.println(cliente.getTelefones());
+            System.out.println(cliente.getEmails());
         }
     }
     private void incluirCliente1(Profissao profissao){
@@ -90,34 +143,5 @@ public class StartApp implements CommandLineRunner {
             System.out.println("Já existe um cliente com o id 2");
 
     }
-    private  Profissao incluirProfissao(){
-        Profissao profissao  = profissaoCrud.findById(1).orElse(null);
-        if(profissao==null) {
-            profissao = new Profissao();
-            profissao.setNome("PROGRAMADOR");
-            profissaoCrud.save(profissao);
-            System.out.println("profissao adicionada com sucesso");
-        }
-        return profissao;
-    }
-    private  void alterarProfissao(){
-        Profissao profissao  = profissaoCrud.findById(1).orElse(null);
-        if(profissao!=null){
-            profissao.setNome("PROGRAMADOR / INSTRUTOR");
-            profissaoCrud.save(profissao);
-            System.out.println("profissao adicionado com sucesso");
-        }else {
-            System.out.println("Não existe a profissão com o id informado");
-        }
-    }
-    private  void listarProfissoes(){
-        List<Profissao> profissoes = profissaoCrud.findAll();
-        for(Profissao p:profissoes){
-            System.out.println(p.getId() + "--" + p.getNome());
-        }
-    }
-    private  void excluirProfissao(){
-       profissaoCrud.deleteById(1);
-        System.out.println("profissao excluida com sucesso");
-    }
+
 }
