@@ -18,6 +18,12 @@ public class ClienteQL {
         Query query = entityManager.createQuery("SELECT c FROM Cliente c");
         List<Cliente> clientes = query.getResultList();
         System.out.println("listando os clientes");
+        for(Cliente cli: clientes){
+            System.out.println(cli.getNome());
+            System.out.println(cli.getEmails());
+            System.out.println(cli.getTelefones());
+            System.out.println(cli.getProfissao().getNome());
+        }
     }
     public void listarClientesPorNome(String nome){
         Query query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.nome LIKE :nome");

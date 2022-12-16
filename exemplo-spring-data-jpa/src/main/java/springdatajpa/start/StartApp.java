@@ -37,6 +37,9 @@ public class StartApp implements CommandLineRunner {
     private void listarClientes(){
         for(Cliente cli: clienteRepository.findAll()){
             System.out.println(cli.getNome());
+            System.out.println(cli.getTelefones());
+            System.out.println(cli.getEmails());
+            System.out.println(cli.getProfissao().getNome());
         }
     }
     private void buscarClienteCompleto(Integer id){
@@ -69,7 +72,7 @@ public class StartApp implements CommandLineRunner {
 
     }
     private void incluirCliente2(Profissao profissao){
-        if(!clienteRepository.existsById(1)){
+        if(!clienteRepository.existsById(2)){
             Cliente cliente = new Cliente();
             cliente.setNome("frank marlon");
             cliente.setDataNascimento(LocalDate.now());
