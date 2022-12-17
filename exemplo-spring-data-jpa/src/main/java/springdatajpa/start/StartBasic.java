@@ -112,7 +112,7 @@ public class StartBasic implements CommandLineRunner {
         if(!clienteRepository.existsById(1)){
             Cliente cliente = new Cliente();
             cliente.setNome("gleyson sampaio");
-            cliente.setDataNascimento(LocalDate.now());
+            cliente.setDataNascimento(LocalDate.of(1990,10,07));
             cliente.setProfissao(profissao);
             cliente.setEmails(Collections.singleton("gleyson@hotmail.com"));
             cliente.setTelefones(Collections.singleton(new Telefone(TelefoneTipo.COM,11965479876L)));
@@ -132,7 +132,7 @@ public class StartBasic implements CommandLineRunner {
         if(!clienteRepository.existsById(2)){
             Cliente cliente = new Cliente();
             cliente.setNome("frank marlon");
-            cliente.setDataNascimento(LocalDate.now());
+            cliente.setDataNascimento(LocalDate.of(1993,5,19));
             cliente.setProfissao(profissao);
             cliente.setEmails(Collections.singleton("frankmarlon@hotmail.com"));
             cliente.setTelefones(Collections.singleton(new Telefone(TelefoneTipo.RES,9823870934L)));

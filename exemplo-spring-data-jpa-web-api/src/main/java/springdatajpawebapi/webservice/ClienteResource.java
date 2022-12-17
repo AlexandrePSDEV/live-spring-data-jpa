@@ -8,6 +8,7 @@ import springdatajpawebapi.repository.ClienteRepository;
 import springdatajpawebapi.service.ClienteService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/clientes")
@@ -37,5 +38,9 @@ public class ClienteResource {
     @GetMapping("/{id}")
     public Cliente getOne(@PathVariable("id") Integer id){
         return repository.getFull(id);
+    }
+    @GetMapping("/search")
+    public List<Cliente> consultar(@RequestParam Map<String,String> params){
+        return  service.consultar(params);
     }
 }
