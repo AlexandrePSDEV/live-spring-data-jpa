@@ -36,6 +36,7 @@ public class ClienteQL {
 
         //tentem refatorar o código acima usando Criteria
     }
+    //Construtores
     public void listarClientesParcialDto(){
         TypedQuery<ClienteParcialDto> q = entityManager.createQuery("SELECT new jpa.dto.ClienteParcialDto(c.nome, c.endereco.logradouro) FROM Cliente c", ClienteParcialDto.class);
         List<ClienteParcialDto> clientes = q.getResultList();
@@ -43,9 +44,11 @@ public class ClienteQL {
             System.out.println(c);
         }
     }
+    //Tuples
     public void listarClientesDto(){
         StringBuilder select = new StringBuilder();
         select.append(" SELECT c.id as id, c.nome as nome, c.dataNascimento as dataNascimento,");
+        //se for native precisa avaliar a instrução em seu banco de dados correspondente
         select.append(" concat(c.endereco.logradouro, ', ',c.endereco.numero,' - ', c.endereco.cep) as enderecoCompleto, "); //apelidando um expressão jpql
         select.append(" c.profissao.nome as profissao ");
         select.append(" FROM Cliente c");

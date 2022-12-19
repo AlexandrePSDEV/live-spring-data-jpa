@@ -14,6 +14,7 @@ public class ProfissaoDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+    //Lembre-se
     @Transactional
     public void save (Profissao profissao){
         entityManager.persist(profissao);
@@ -24,6 +25,7 @@ public class ProfissaoDao {
     }
     @Transactional
     public int delete(Integer id){
+        //primeiro se busca, depois se remove
         Profissao profissao = findById(id);
         if(profissao!=null){
             entityManager.remove(profissao);

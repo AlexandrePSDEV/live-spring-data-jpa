@@ -12,9 +12,9 @@ public class JpaProfissaoApplication {
         FabricaConexao.iniciarConexao();
         profissaoCrud = new ProfissaoDao();
         incluirProfissao();
-        alterarProfissao();
-        listarProfissoes();
-        excluirProfissao();
+        //alterarProfissao();
+        //listarProfissoes();
+        //excluirProfissao();
     }
     private static void incluirProfissao(){
         Profissao profissao  =new Profissao();
