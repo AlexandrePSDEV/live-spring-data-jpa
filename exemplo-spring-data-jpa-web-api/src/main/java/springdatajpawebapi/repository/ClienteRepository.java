@@ -21,4 +21,8 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> , Jpa
 
     List<ClienteResponse> findByNomeContaining(String nome);
 
+    /**
+     Quando extender de JpaSpecificationExecutor teremos novos findAll
+     */
+
 }

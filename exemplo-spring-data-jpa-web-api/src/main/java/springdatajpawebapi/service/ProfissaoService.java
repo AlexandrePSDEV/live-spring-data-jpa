@@ -13,10 +13,12 @@ import springdatajpawebapi.repository.ProfissaoRepository;
 public class ProfissaoService {
     @Autowired
     private ProfissaoRepository repository;
+    //PrePersist
     public void save(Profissao request){
         //deveria ser um dto
         repository.save(request);
     }
+    //PreUpdate
     public void update(Integer id, Profissao request){
         //deveria ser um dto e tratar algumas regras
         Profissao entity = repository.findById(id).orElse(null);
@@ -24,6 +26,7 @@ public class ProfissaoService {
         entity.setNome(request.getNome());
         repository.save(entity);
     }
+    //paginação
     public Page<ProfissaoResponse> listar(String nome, int page, int size){
         Pageable paginacao = PageRequest.of(page, size);
         Page<ProfissaoResponse> result=null;
