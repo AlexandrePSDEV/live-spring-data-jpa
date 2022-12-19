@@ -14,7 +14,7 @@ public class FabricaConexao {
         try{
             //simulando apecto de singleton
             if(entityManager==null) {
-                EntityManagerFactory factory = Persistence.createEntityManagerFactory("MY_PU");
+                EntityManagerFactory factory = Persistence.createEntityManagerFactory("MY_PU");//resouces/persistence.xml
                 entityManager = factory.createEntityManager();
                 System.out.println("conexao realizada com sucesso");
             }

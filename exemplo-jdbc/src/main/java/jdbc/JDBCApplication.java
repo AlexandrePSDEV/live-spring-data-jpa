@@ -12,6 +12,7 @@ public class JDBCApplication {
         listarProfissoes();
         excluirProfissao();
     }
+    //pensem que estes métodos poderiam ações de seu sistema
     private static void incluirProfissao(){
         Profissao profissao  =new Profissao();
         profissao.setNome("PROGRAMADOR");

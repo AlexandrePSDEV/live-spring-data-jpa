@@ -14,7 +14,7 @@ public class ProfissaoDao {
         entityManager = FabricaConexao.getEntityManager();
     }
     public void save (Profissao profissao){
-        entityManager.getTransaction().begin();;
+        entityManager.getTransaction().begin();
         entityManager.persist(profissao);
         entityManager.getTransaction().commit();
     }
@@ -41,9 +41,14 @@ public class ProfissaoDao {
     public List<Profissao> findAll(){
         //JPQL x CRITERIA
         Query query = entityManager.createQuery("SELECT p FROM Profissao p",Profissao.class);//SELECT sobre a Entidade
-        //entityManager.createNativeQuery("SELECT * FROM tab_profissao");
+        //entityManager.createNativeQuery("SELECT * FROM tab_profissao"); //forma nativa
 
-        //query.setParameter();
+        /**
+         * Se precisar informar os parametros
+            Query query = entityManager.createQuery("SELECT p FROM Profissao p WHERE p.nome :nome",Profissao.class);
+            query.setParameter("nome", "PROGRAMADOR"); // -> Não esquece as conveções LIKE de SQL
+         */
+
         return query.getResultList();
     }
 
