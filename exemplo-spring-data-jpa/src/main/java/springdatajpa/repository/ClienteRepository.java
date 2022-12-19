@@ -5,13 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import springdatajpa.dto.response.ClienteResponse;
 import springdatajpa.dto.view.ClienteView;
-import springdatajpa.dto.view.ProfissaoView;
 import springdatajpa.model.Cliente;
 
 import java.util.List;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
+    //QueryOverride
     @Query("SELECT c FROM Cliente c WHERE id = ?1")
+    //Carregamento de dependencias
     @EntityGraph(attributePaths={"profissao"})
     Cliente findClienteWithProfissao(Integer id);
 

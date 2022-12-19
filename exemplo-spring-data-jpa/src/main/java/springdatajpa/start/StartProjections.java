@@ -35,7 +35,7 @@ public class StartProjections implements CommandLineRunner {
             System.out.println(d);
         }
     }
-    //Projections View
+    //Projections View - via interfaces
     private void listarProfissoesViewProjection(){
         List<ProfissaoView>  views = profissaoCrud.findViewByNome("PROGRAMADOR");
         for(ProfissaoView v: views){
