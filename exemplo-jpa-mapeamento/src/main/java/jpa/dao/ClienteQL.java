@@ -16,6 +16,7 @@ public class ClienteQL {
     }
 
     //JPQL - consulta sobre a Entidade
+    //Lazy versus Eager em relacionamentos
     public void listarClientes(){
         Query query = entityManager.createQuery("SELECT c FROM Cliente c");
         List<Cliente> clientes = query.getResultList();
@@ -35,6 +36,9 @@ public class ClienteQL {
         query.setParameter("nome","%"+nome+"%");
 
         List<Cliente> clientes = query.getResultList();
+        for(Cliente c: clientes){
+            System.out.println(c.getId() + "-" + c.getNome());
+        }
         System.out.println("listando os clientes que possuem o nome " + nome);
 
         //tentem refatorar o código acima usando Criteria
