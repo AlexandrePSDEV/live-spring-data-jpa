@@ -15,7 +15,7 @@ public class ProfissaoCrud {
 
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.setString(1, profissao.getNome());
-            
+
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("Uma nova profissao foi salva com sucesso!");
@@ -62,6 +62,7 @@ public class ProfissaoCrud {
 
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.setInt(1,id);
+
             ResultSet result = statement.executeQuery();
 
             while (result.next()){

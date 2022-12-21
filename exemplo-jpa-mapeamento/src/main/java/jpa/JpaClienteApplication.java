@@ -47,7 +47,10 @@ public class JpaClienteApplication {
             endereco.setLogradouro("RUA DAS FLORES");
             endereco.setNumero("45A");
             cliente.setEndereco(endereco);
+
+
             clienteCrud.save(cliente);
+
             System.out.println("primeiro cliente adicionado");
     }
     private static void incluirCliente2(Profissao profissao){

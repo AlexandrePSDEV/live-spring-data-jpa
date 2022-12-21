@@ -17,6 +17,7 @@ public class FabricaoConexao {
                 System.out.println("CONEXAO REALIZADA COM SUCESSO");
             }
         }catch (Exception ex){
+            ex.printStackTrace();
             throw new RuntimeException("Erro ao tentar realizar uma conexão");
         }
     }

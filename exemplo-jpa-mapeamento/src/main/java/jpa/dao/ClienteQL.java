@@ -14,6 +14,8 @@ public class ClienteQL {
     public ClienteQL(){
         entityManager = FabricaConexao.getEntityManager();
     }
+
+    //JPQL - consulta sobre a Entidade
     public void listarClientes(){
         Query query = entityManager.createQuery("SELECT c FROM Cliente c");
         List<Cliente> clientes = query.getResultList();
@@ -25,6 +27,7 @@ public class ClienteQL {
             System.out.println(cli.getProfissao().getNome());
         }
     }
+    //JPQL + params
     public void listarClientesPorNome(String nome){
         Query query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.nome LIKE :nome");
 

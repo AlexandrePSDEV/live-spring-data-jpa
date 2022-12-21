@@ -8,6 +8,8 @@ public class Profissao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "nm_profissao", length = 50, nullable = false)
     private String nome;
 
     public Integer getId() {

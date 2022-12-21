@@ -9,7 +9,7 @@ public class ClienteDao {
         entityManager = FabricaConexao.getEntityManager();
     }
     public void save (Cliente cliente){
-        entityManager.getTransaction().begin();;
+        entityManager.getTransaction().begin();
         entityManager.persist(cliente);
         entityManager.getTransaction().commit();
     }

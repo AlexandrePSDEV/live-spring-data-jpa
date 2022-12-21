@@ -34,7 +34,7 @@ public class JDBCApplication {
         }
     }
     private static void excluirProfissao(){
-        int linhasDeletas = profissaoCrud.delete(1);
+        int linhasDeletas = profissaoCrud.delete(2);
         if(linhasDeletas==0)
             System.out.println("Nenhum registro com id informado localizado para a exclusão");
     }
