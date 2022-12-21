@@ -38,8 +38,8 @@ public class JpaClienteApplication {
             Cliente cliente = new Cliente();
             cliente.setNome("gleyson sampaio");
             cliente.setDataNascimento(LocalDate.now());
-            //vale o esforço?
-            cliente.setProfissao(profissao);
+
+            //todos abaixo precisam ser cascade ?
             cliente.setEmails(Collections.singleton("gleyson@hotmail.com"));
             cliente.setTelefones(Collections.singleton(new Telefone(TelefoneTipo.COM,11965479876L)));
             Endereco endereco = new Endereco();
@@ -48,6 +48,8 @@ public class JpaClienteApplication {
             endereco.setNumero("45A");
             cliente.setEndereco(endereco);
 
+            //vale o esforço?
+            cliente.setProfissao(profissao);
 
             clienteCrud.save(cliente);
 
