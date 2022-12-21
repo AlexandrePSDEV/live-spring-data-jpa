@@ -59,7 +59,10 @@ public class ClienteQL {
         select.append(" concat(c.endereco.logradouro, ', ',c.endereco.numero,' - ', c.endereco.cep) as enderecoCompleto, "); //apelidando um expressão jpql
         select.append(" c.profissao.nome as profissao ");
         select.append(" FROM Cliente c");
+
+        //Primo do ResultSet
         TypedQuery<Tuple> query = entityManager.createQuery(select.toString(), Tuple.class);
+
         List<Tuple> registros = query.getResultList();
         for (Tuple r : registros) {
             System.out.println("** - registro - ** ");
