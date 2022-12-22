@@ -26,10 +26,10 @@ public class StartBasic implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Profissao profissao = incluirProfissao();
-        listarProfissoesNome("GRA");
+        //listarProfissoesNome("GRA");
         //incluirCliente1(profissao);
         //incluirCliente2(profissao);
-        //listarClientes();
+        listarClientes();
         //buscarClienteComProfissao(1);
         //buscarClienteCompleto(1);
 

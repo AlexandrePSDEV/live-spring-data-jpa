@@ -40,7 +40,7 @@ public class Cliente {
     private Integer profissao;
 
     */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "profissao_id")
     private Profissao profissao;
 

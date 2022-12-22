@@ -30,11 +30,10 @@ public class ClienteQL {
     }
     //JPQL + params
     public void listarClientesPorNome(String nome){
-        Query query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.nome LIKE :nome");
+        Query query = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.nome LIKE :n");
 
         //query.setParameter("nome",nome);
-        query.setParameter("nome","%"+nome+"%");
-
+        query.setParameter("n","%"+nome+"%");
         List<Cliente> clientes = query.getResultList();
         for(Cliente c: clientes){
             System.out.println(c.getId() + "-" + c.getNome());
